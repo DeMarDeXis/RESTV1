@@ -1,0 +1,4 @@
+.env
+*.txt
+sqlite_test.go
+storage/*
