@@ -1,12 +1,15 @@
 package main
 
 import (
+	"context"
 	"log/slog"
 	"net/http"
 	"os"
+	"time"
 	"url-shortener/internal/config"
 	"url-shortener/internal/lib/logger/handlers/slogpretty"
 	"url-shortener/internal/lib/logger/sl"
+	eventsender "url-shortener/internal/services/event-sender"
 	"url-shortener/internal/storage/sqlite"
 
 	"url-shortener/internal/http-server/handlers/delete"
@@ -76,6 +79,9 @@ func main() {
 		WriteTimeout: cfg.Timeout,
 		IdleTimeout:  cfg.IdleTimeout,
 	}
+
+	sender := eventsender.New(storage, log)
+	sender.StartProcessEvents(context.Background(), time.Second*5) //TODO: add config property
 
 	// TODO: Ознакомиться с http клиентом: curl
 	// TODO: Ознакомиться с http клиентом: postman
