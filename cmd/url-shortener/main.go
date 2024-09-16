@@ -46,6 +46,7 @@ func main() {
 		cfg.Clients.SSO.Timeout,
 		cfg.Clients.SSO.RetriesCount,
 	)
+
 	if err != nil {
 		log.Error("failed init sso client", sl.Err(err))
 		os.Exit(1)
