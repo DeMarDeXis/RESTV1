@@ -2,3 +2,4 @@
 *.txt
 sqlite_test.go
 storage/*
+.idea/*
