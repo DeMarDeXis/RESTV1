@@ -28,7 +28,7 @@ type HTTPServer struct {
 type Client struct {
 	Address      string        `yaml:"address"`
 	Timeout      time.Duration `yaml:"timeout"`
-	RetriesCount int           `yaml:"retriesCount`
+	RetriesCount int           `yaml:"retriesCount"`
 	//Insecure bool `yaml:"insecure"`
 }
 
